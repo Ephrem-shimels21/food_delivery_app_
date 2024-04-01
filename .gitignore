@@ -51,7 +51,6 @@ ios/build/
 *.lock
 *.log
 *.DS_Store
-*.dart
 *.flutter-plugins
 .packages
 pubspec.lock
