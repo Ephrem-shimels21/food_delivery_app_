@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:food_delivery_appb/auth/screens/login.dart';
-import 'package:food_delivery_appb/auth/screens/reset_password.dart';
+import 'package:food_delivery_appb/auth/screens/forgot_password.dart';
+import 'package:food_delivery_appb/auth/screens/otp_verfication.dart';
 import 'package:food_delivery_appb/auth/screens/signup.dart';
 import 'package:food_delivery_appb/on_boarding/on_boarding_1.dart';
 import 'package:food_delivery_appb/on_boarding/on_boarding_2.dart';
@@ -19,12 +21,22 @@ GoRouter router = GoRouter(initialLocation: '/splash', routes: [
     path: '/signup',
     builder: (context, state) => const Signup(),
   ),
-  GoRoute(
-    path: '/login',
-    builder: (context, state) => const Login(),
-  ),
-  GoRoute(
-    path: '/passwordReset',
-    builder: (context, state) => const PasswordReset(),
-  )
+  GoRoute(path: '/login', builder: (context, state) => const Login(), routes: [
+    GoRoute(
+        path: 'passwordReset',
+        builder: (context, state) => const PasswordReset(),
+        routes: [
+          GoRoute(
+              path: 'otp-verification/:phone',
+              pageBuilder: (context, state) {
+                final phone = state.pathParameters['phone'];
+                return MaterialPage(
+                    child: OtpVerification(phoneNumber: phone!));
+              })
+        ]),
+  ]),
+  // GoRoute(
+  //   path: '/passwordReset',
+  //   builder: (context, state) => const PasswordReset(),
+  // )
 ]);

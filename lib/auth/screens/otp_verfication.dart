@@ -1,20 +1,32 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:food_delivery_appb/Route/route.dart';
+import 'package:flutter/widgets.dart';
+import 'package:food_delivery_appb/auth/widgets/rectangle_button.dart';
 import 'package:food_delivery_appb/auth/widgets/rounded_textfield.dart';
 import 'package:food_delivery_appb/utils/color_extension.dart';
 import 'package:go_router/go_router.dart';
 
-class PasswordReset extends StatefulWidget {
-  const PasswordReset({super.key});
+class OtpVerification extends StatefulWidget {
+  final String phoneNumber;
+  const OtpVerification({super.key, required this.phoneNumber});
 
   @override
-  State<PasswordReset> createState() => _PasswordResetState();
+  State<OtpVerification> createState() => _OtpVerificationState();
 }
 
-class _PasswordResetState extends State<PasswordReset> {
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
+class _OtpVerificationState extends State<OtpVerification> {
+  TextEditingController otpController = TextEditingController();
+  late String otpCode;
+  int timer = 60;
+
+  @override
+  void initState() {
+    super.initState();
+    generateOTP();
+    startTimer();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +72,8 @@ class _PasswordResetState extends State<PasswordReset> {
                 ),
                 SizedBox(height: media.height * 0.05),
                 Text(
-                  "Forgot Password?",
+                  "Enter 4-digit\n Verification code",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: UniversalColors.primaryText,
                     fontWeight: FontWeight.w800,
@@ -69,7 +82,7 @@ class _PasswordResetState extends State<PasswordReset> {
                 ),
                 SizedBox(height: media.height * 0.01),
                 Text(
-                  "Select which contact details should we\n use to reset your password",
+                  "Code send to ${widget.phoneNumber} \n This code will expired in $timer",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: UniversalColors.secondaryText,
@@ -90,32 +103,18 @@ class _PasswordResetState extends State<PasswordReset> {
                       ),
                     ],
                   ),
-                  child: Column(
-                    children: [
-                      RoundTextfield(
-                        controller: phoneController,
-                        labeltext: "Via sms",
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        keyboardType: TextInputType.number,
-                        inputFormatter: <TextInputFormatter>[
-                          FilteringTextInputFormatter.digitsOnly,
-                          LengthLimitingTextInputFormatter(10)
-                        ],
-                        bgColor: Colors.white,
-                        left:
-                            const Icon(Icons.chat_rounded, color: Colors.blue),
-                      ),
-                      SizedBox(height: media.height * 0.03),
-                      RoundTextfield(
-                        controller: emailController,
-                        labeltext: "Via email:",
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        bgColor: Colors.white,
-                        left: const Icon(Icons.email, color: Colors.blue),
-                      ),
-                    ],
+                  child: RoundTextfield(
+                    controller: otpController,
+                    hintText: "OTP",
                   ),
                 ),
+                SizedBox(height: media.height * 0.3),
+                Container(
+                    alignment: Alignment.center,
+                    child: RectangleButton(
+                        text: "Next",
+                        width: media.width * 0.2,
+                        onPressed: () {})),
               ],
             ),
           ),
@@ -123,6 +122,27 @@ class _PasswordResetState extends State<PasswordReset> {
       ),
     );
   }
+
+  void generateOTP() {
+    otpCode = (1000 + Random().nextInt(9000)).toString();
+    sendOTP(widget.phoneNumber, otpCode);
+  }
+
+  void startTimer() {
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (this.timer == 0) {
+        timer.cancel();
+        generateOTP();
+        this.timer = 60;
+      } else {
+        setState(() {
+          this.timer--;
+        });
+      }
+    });
+  }
+
+  void sendOTP(String phoneNumber, String otpCode) {}
 }
 
 class CustomClipperPath extends CustomClipper<Path> {
