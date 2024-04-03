@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/services.dart';
 import 'package:food_delivery_appb/auth/widgets/rectangle_button.dart';
 import 'package:food_delivery_appb/auth/widgets/rounded_textfield.dart';
 import 'package:food_delivery_appb/utils/color_extension.dart';
@@ -19,7 +18,8 @@ class OtpVerification extends StatefulWidget {
 class _OtpVerificationState extends State<OtpVerification> {
   TextEditingController otpController = TextEditingController();
   late String otpCode;
-  int timer = 60;
+  int timer = 100;
+  Timer? _timer;
 
   @override
   void initState() {
@@ -72,8 +72,8 @@ class _OtpVerificationState extends State<OtpVerification> {
                 ),
                 SizedBox(height: media.height * 0.05),
                 Text(
-                  "Enter 4-digit\n Verification code",
-                  textAlign: TextAlign.center,
+                  "Enter 4-digit\nVerification code",
+                  // textAlign: TextAlign.center,
                   style: TextStyle(
                     color: UniversalColors.primaryText,
                     fontWeight: FontWeight.w800,
@@ -82,8 +82,7 @@ class _OtpVerificationState extends State<OtpVerification> {
                 ),
                 SizedBox(height: media.height * 0.01),
                 Text(
-                  "Code send to ${widget.phoneNumber} \n This code will expired in $timer",
-                  textAlign: TextAlign.center,
+                  "Code send to ${widget.phoneNumber}.This code will\nexpired in $timer",
                   style: TextStyle(
                     color: UniversalColors.secondaryText,
                     fontFamily: "meterpolis",
@@ -106,6 +105,11 @@ class _OtpVerificationState extends State<OtpVerification> {
                   child: RoundTextfield(
                     controller: otpController,
                     hintText: "OTP",
+                    keyboardType: TextInputType.number,
+                    inputFormatter: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(4)
+                    ],
                   ),
                 ),
                 SizedBox(height: media.height * 0.3),
@@ -129,7 +133,8 @@ class _OtpVerificationState extends State<OtpVerification> {
   }
 
   void startTimer() {
-    Timer.periodic(const Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (!mounted) return;
       if (this.timer == 0) {
         timer.cancel();
         generateOTP();
@@ -143,6 +148,11 @@ class _OtpVerificationState extends State<OtpVerification> {
   }
 
   void sendOTP(String phoneNumber, String otpCode) {}
+  @override
+  void dispose() {
+    super.dispose();
+    _timer?.cancel();
+  }
 }
 
 class CustomClipperPath extends CustomClipper<Path> {
