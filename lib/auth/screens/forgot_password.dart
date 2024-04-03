@@ -124,7 +124,7 @@ class _PasswordResetState extends State<PasswordReset> {
                         width: media.width * 0.2,
                         onPressed: () {
                           GoRouter.of(context).push(
-                            '/passwordReset/otp-verification/${phoneController.text}',
+                            '/otp-verification/:${phoneController.text}',
                           );
                         })),
               ],
