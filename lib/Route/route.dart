@@ -21,22 +21,19 @@ GoRouter router = GoRouter(initialLocation: '/splash', routes: [
     path: '/signup',
     builder: (context, state) => const Signup(),
   ),
-  GoRoute(path: '/login', builder: (context, state) => const Login(), routes: [
-    GoRoute(
-        path: 'passwordReset',
-        builder: (context, state) => const PasswordReset(),
-        routes: [
-          GoRoute(
-              path: 'otp-verification/:phone',
-              pageBuilder: (context, state) {
-                final phone = state.pathParameters['phone'];
-                return MaterialPage(
-                    child: OtpVerification(phoneNumber: phone!));
-              })
-        ]),
-  ]),
+  GoRoute(path: '/login', builder: (context, state) => const Login()),
   // GoRoute(
   //   path: '/passwordReset',
   //   builder: (context, state) => const PasswordReset(),
   // )
+  GoRoute(
+    path: '/passwordReset',
+    builder: (context, state) => const PasswordReset(),
+  ),
+  GoRoute(
+      path: '/otp-verification/:phone',
+      pageBuilder: (context, state) {
+        final phone = state.pathParameters['phone'];
+        return MaterialPage(child: OtpVerification(phoneNumber: phone!));
+      }),
 ]);
