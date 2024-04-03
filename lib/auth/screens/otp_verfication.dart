@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:food_delivery_appb/auth/widgets/otp_input.dart';
 import 'package:food_delivery_appb/auth/widgets/rectangle_button.dart';
 import 'package:food_delivery_appb/auth/widgets/rounded_textfield.dart';
 import 'package:food_delivery_appb/utils/color_extension.dart';
@@ -91,26 +92,14 @@ class _OtpVerificationState extends State<OtpVerification> {
                   ),
                 ),
                 SizedBox(height: media.height * 0.03),
-                Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  child: RoundTextfield(
-                    controller: otpController,
-                    hintText: "OTP",
-                    keyboardType: TextInputType.number,
-                    inputFormatter: <TextInputFormatter>[
-                      FilteringTextInputFormatter.digitsOnly,
-                      LengthLimitingTextInputFormatter(4)
-                    ],
-                  ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    OtpForm(),
+                    OtpForm(),
+                    OtpForm(),
+                    OtpForm(),
+                  ],
                 ),
                 SizedBox(height: media.height * 0.3),
                 Container(
