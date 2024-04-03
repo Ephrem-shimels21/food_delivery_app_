@@ -137,7 +137,7 @@ class _LoginState extends State<Login> {
             ),
             TextButton(
                 onPressed: () {
-                  router.push("/passwordReset");
+                  router.push("/ForgotPassword");
                 },
                 child: Text("Forgot Your Password ?",
                     style: TextStyle(

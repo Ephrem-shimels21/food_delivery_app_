@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:food_delivery_appb/auth/widgets/otp_input.dart';
 import 'package:food_delivery_appb/auth/widgets/rectangle_button.dart';
-import 'package:food_delivery_appb/auth/widgets/rounded_textfield.dart';
 import 'package:food_delivery_appb/utils/color_extension.dart';
 import 'package:go_router/go_router.dart';
 
@@ -106,8 +104,10 @@ class _OtpVerificationState extends State<OtpVerification> {
                     alignment: Alignment.center,
                     child: RectangleButton(
                         text: "Next",
-                        width: media.width * 0.2,
-                        onPressed: () {})),
+                        width: media.width * 0.3,
+                        onPressed: () {
+                          context.push('/password-reset');
+                        })),
               ],
             ),
           ),

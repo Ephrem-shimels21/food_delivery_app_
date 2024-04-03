@@ -5,14 +5,14 @@ import 'package:food_delivery_appb/auth/widgets/rounded_textfield.dart';
 import 'package:food_delivery_appb/utils/color_extension.dart';
 import 'package:go_router/go_router.dart';
 
-class PasswordReset extends StatefulWidget {
-  const PasswordReset({super.key});
+class ForgotPassword extends StatefulWidget {
+  const ForgotPassword({super.key});
 
   @override
-  State<PasswordReset> createState() => _PasswordResetState();
+  State<ForgotPassword> createState() => _ForgotPasswordState();
 }
 
-class _PasswordResetState extends State<PasswordReset> {
+class _ForgotPasswordState extends State<ForgotPassword> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController emailController = TextEditingController();
 
@@ -121,7 +121,7 @@ class _PasswordResetState extends State<PasswordReset> {
                     alignment: Alignment.center,
                     child: RectangleButton(
                         text: "Next",
-                        width: media.width * 0.2,
+                        width: media.width * 0.3,
                         onPressed: () {
                           GoRouter.of(context).push(
                             '/otp-verification/:${phoneController.text}',
