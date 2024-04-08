@@ -19,6 +19,11 @@ GoRouter router = GoRouter(
     navigatorKey: _rootNavigatorKey,
     routes: [
       GoRoute(
+        path: '/',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const StartupView(),
+      ),
+      GoRoute(
           path: '/splash',
           parentNavigatorKey: _rootNavigatorKey,
           builder: (context, state) => const StartupView()),
