@@ -3,6 +3,7 @@ import "package:food_delivery_appb/Route/route.dart";
 import "package:food_delivery_appb/auth/widgets/rectangle_button.dart";
 import "package:food_delivery_appb/auth/widgets/rounded_textfield.dart";
 import "package:food_delivery_appb/utils/color_extension.dart";
+import "package:go_router/go_router.dart";
 import 'package:google_fonts/google_fonts.dart';
 
 class Login extends StatefulWidget {
@@ -147,7 +148,9 @@ class _LoginState extends State<Login> {
             SizedBox(height: media.height * 0.03),
             RectangleButton(
               text: "Login",
-              onPressed: () {},
+              onPressed: () {
+                context.go('/home');
+              },
             ),
           ])),
     ));
