@@ -154,6 +154,7 @@ class _SignupState extends State<Signup> {
             SizedBox(height: media.height * 0.03),
             RectangleButton(
               text: "Create Account",
+              width: media.width * 0.5,
               onPressed: () {},
             ),
             SizedBox(height: media.height * 0.02),
