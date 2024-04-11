@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_appb/utils/color_extension.dart';
+import 'package:food_delivery_appb/common/nav_item.dart';
 import 'package:go_router/go_router.dart';
 
 class BottomBar extends StatefulWidget {
@@ -16,28 +16,10 @@ class _BottomBar extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: widget.child,
-        bottomNavigationBar: BottomNavigationBar(
-          onTap: changeTab,
-          currentIndex: currentIndex,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home, color: UniversalColors.primary),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person, color: UniversalColors.primary),
-              label: 'Profile',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart),
-              label: 'Cart',
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.chat, color: UniversalColors.primary),
-                label: 'chat')
-          ],
-        ));
+      body: widget.child,
+      bottomNavigationBar:
+          CustomBottomNavBar(currentIndex: currentIndex, onTap: changeTab),
+    );
   }
 
   void changeTab(int index) {
@@ -46,10 +28,13 @@ class _BottomBar extends State<BottomBar> {
         context.go('/home');
         break;
       case 1:
-        context.go('/profile');
+        context.go('/home');
         break;
       case 2:
-        context.go('/cart');
+        context.go('/home');
+        break;
+      case 3:
+        context.go('/home');
         break;
     }
 
