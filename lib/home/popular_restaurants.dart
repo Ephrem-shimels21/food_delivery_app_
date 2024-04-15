@@ -118,7 +118,7 @@ class _PopularRestaurants extends State<PopularRestaurants> {
                       style: TextStyle(
                         fontSize: MediaQuery.of(context).orientation ==
                                 Orientation.portrait
-                            ? media.width * 0.1
+                            ? media.width * 0.09
                             : media.width * 0.035,
                         color: UniversalColors.primaryText,
                         fontFamily: "metropolis",
@@ -128,14 +128,15 @@ class _PopularRestaurants extends State<PopularRestaurants> {
               padding: EdgeInsets.only(
                   top:
                       MediaQuery.of(context).orientation == Orientation.portrait
-                          ? media.height * 0.18
+                          ? media.height * 0.22
                           : media.height * 0.40,
                   left: 0,
                   right: 20),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                      width: media.width * 0.7,
+                      width: media.width * 0.8,
                       padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                       child: RoundTextfield(
                         controller: searchController,
@@ -146,7 +147,7 @@ class _PopularRestaurants extends State<PopularRestaurants> {
                       )),
                   Container(
                       width: media.width * 0.15,
-                      margin: const EdgeInsets.only(bottom: 15),
+                      margin: const EdgeInsets.only(bottom: 23),
                       padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
                       decoration: BoxDecoration(
                         color: UniversalColors.primary.withOpacity(0.2),
