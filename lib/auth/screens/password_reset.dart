@@ -3,6 +3,7 @@ import 'package:food_delivery_appb/auth/widgets/rectangle_button.dart';
 import 'package:food_delivery_appb/auth/widgets/rounded_textfield.dart';
 import 'package:food_delivery_appb/utils/color_extension.dart';
 import 'package:go_router/go_router.dart';
+import 'package:food_delivery_appb/common/clipper_path.dart';
 
 class PasswordReset extends StatefulWidget {
   const PasswordReset({super.key});
@@ -153,18 +154,4 @@ class _PasswordResetState extends State<PasswordReset> {
       ),
     );
   }
-}
-
-class CustomClipperPath extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    var path = Path();
-    path.lineTo(size.width, 0);
-    path.lineTo(size.width, size.height);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
