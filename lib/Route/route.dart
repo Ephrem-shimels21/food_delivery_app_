@@ -5,6 +5,8 @@ import 'package:food_delivery_appb/auth/screens/otp_verfication.dart';
 import 'package:food_delivery_appb/auth/screens/password_reset.dart';
 import 'package:food_delivery_appb/auth/screens/signup.dart';
 import 'package:food_delivery_appb/common/bottom_navigation.dart';
+import 'package:food_delivery_appb/home/popular_menus.dart';
+import 'package:food_delivery_appb/home/popular_restaurants.dart';
 import 'package:food_delivery_appb/on_boarding/on_boarding_1.dart';
 import 'package:food_delivery_appb/on_boarding/on_boarding_2.dart';
 import 'package:food_delivery_appb/on_boarding/splash.dart';
@@ -69,6 +71,16 @@ GoRouter router = GoRouter(
               path: '/home',
               parentNavigatorKey: _shellNavigatorKey,
               builder: (context, state) => const HomeView(),
+            ),
+            GoRoute(
+              path: '/popularRestaurants',
+              parentNavigatorKey: _shellNavigatorKey,
+              builder: (context, state) => const PopularRestaurants(),
+            ),
+            GoRoute(
+              path: '/popularMenu',
+              parentNavigatorKey: _shellNavigatorKey,
+              builder: (context, state) => const PopularMenu(),
             )
           ])
     ]);
