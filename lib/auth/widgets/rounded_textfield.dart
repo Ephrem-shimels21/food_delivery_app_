@@ -32,7 +32,8 @@ class RoundTextfield extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(7)),
+            color: bgColor ?? Colors.white,
+            borderRadius: BorderRadius.circular(7)),
         child: TextField(
           inputFormatters: inputFormatter,
           obscureText: obscureText,
