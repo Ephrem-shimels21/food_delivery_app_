@@ -136,7 +136,7 @@ class _PopularRestaurants extends State<PopularRestaurants> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                      width: media.width * 0.8,
+                      width: media.width * 0.77,
                       padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                       child: RoundTextfield(
                         controller: searchController,
