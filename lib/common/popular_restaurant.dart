@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_appb/Route/route.dart';
 import 'package:food_delivery_appb/utils/color_extension.dart';
 
 class PopularRestaurantGrid extends StatelessWidget {
   final Map restaurant;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
+  final int? font;
   const PopularRestaurantGrid(
-      {super.key, required this.restaurant, required this.onTap});
+      {super.key, required this.restaurant, this.onTap, this.font});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class PopularRestaurantGrid extends StatelessWidget {
               )
             ]),
         child: InkWell(
-          onTap: onTap,
+          onTap: onTap ?? onTapping,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -31,7 +33,7 @@ class PopularRestaurantGrid extends StatelessWidget {
                   width: 100, height: 100, fit: BoxFit.cover),
               Text(restaurant['name'],
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: font?.toDouble() ?? 20,
                     fontWeight: FontWeight.w800,
                     color: UniversalColors.primaryText,
                   )),
@@ -44,5 +46,11 @@ class PopularRestaurantGrid extends StatelessWidget {
             ],
           ),
         ));
+  }
+
+  onTapping() {
+    final encodedName = Uri.encodeComponent(restaurant['name']);
+    final encodedImage = Uri.encodeComponent(restaurant['image']);
+    router.go('/restaurantDetail/$encodedName/$encodedImage');
   }
 }
