@@ -213,8 +213,7 @@ class _HomeView extends State<HomeView> {
                   mainAxisSpacing: 10),
               itemBuilder: (BuildContext context, int index) {
                 var restaurant = popularRestaurants[index] as Map? ?? {};
-                return PopularRestaurantGrid(
-                    restaurant: restaurant, onTap: () {});
+                return PopularRestaurantGrid(restaurant: restaurant);
               }),
           TitleAndViewMore(
             title: "Popular Menu",
@@ -230,7 +229,7 @@ class _HomeView extends State<HomeView> {
               itemCount: 1,
               itemBuilder: ((context, index) {
                 var food = popularMenu[index] as Map? ?? {};
-                return PopularMenuList(food: food, onTap: () {});
+                return PopularMenuList(food: food);
               }))
         ],
       ))),
