@@ -27,35 +27,36 @@ class RectangleButton extends StatelessWidget {
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
 
-    return InkWell(
-        onTap: onPressed,
-        child: Container(
-            height: height ?? media.height * 0.08,
-            width: width ?? media.width * 0.3,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              border: type == RectangleButtonType.filled
-                  ? null
-                  : Border.all(color: UniversalColors.primary),
-              color: type == RectangleButtonType.filled
-                  ? UniversalColors.primary
-                  : Colors.white,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  if (left != null) left!,
-                  Text(
-                    text,
-                    style: TextStyle(
-                      color: type == RectangleButtonType.filled
-                          ? Colors.white
-                          : UniversalColors.primaryText,
-                      fontSize: fontSize,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  )
-                ])));
+    return Material(
+        child: InkWell(
+            onTap: onPressed,
+            child: Container(
+                height: height ?? media.height * 0.08,
+                width: width ?? media.width * 0.3,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  border: type == RectangleButtonType.filled
+                      ? null
+                      : Border.all(color: UniversalColors.primary),
+                  color: type == RectangleButtonType.filled
+                      ? UniversalColors.primary
+                      : Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      if (left != null) left!,
+                      Text(
+                        text,
+                        style: TextStyle(
+                          color: type == RectangleButtonType.filled
+                              ? Colors.white
+                              : UniversalColors.primaryText,
+                          fontSize: fontSize,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      )
+                    ]))));
   }
 }
