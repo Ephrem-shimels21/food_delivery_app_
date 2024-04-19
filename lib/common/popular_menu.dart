@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_appb/Route/route.dart';
 import 'package:food_delivery_appb/utils/color_extension.dart';
 
 class PopularMenuList extends StatelessWidget {
   final Map food;
-  final VoidCallback onTap;
-  const PopularMenuList({super.key, required this.food, required this.onTap});
+  final VoidCallback? onTap;
+  const PopularMenuList({super.key, required this.food, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class PopularMenuList extends StatelessWidget {
               )
             ]),
         child: InkWell(
-            onTap: onTap,
+            onTap: onTap ?? onTapping,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -55,5 +56,11 @@ class PopularMenuList extends StatelessWidget {
                     )),
               ],
             )));
+  }
+
+  onTapping() {
+    final encodedName = Uri.encodeComponent(food['name']);
+    final encodedImage = Uri.encodeComponent(food['image']);
+    router.go('/foodDetail/$encodedName/$encodedImage');
   }
 }
