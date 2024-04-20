@@ -6,6 +6,7 @@ import 'package:food_delivery_appb/auth/screens/password_reset.dart';
 import 'package:food_delivery_appb/auth/screens/signup.dart';
 import 'package:food_delivery_appb/common/bottom_navigation.dart';
 import 'package:food_delivery_appb/food/screens/food_detail.dart';
+import 'package:food_delivery_appb/food/screens/order_details.dart';
 import 'package:food_delivery_appb/home/Screens/filtering_page.dart';
 import 'package:food_delivery_appb/home/Screens/home_view.dart';
 import 'package:food_delivery_appb/home/Screens/popular_menus.dart';
@@ -84,6 +85,11 @@ GoRouter router = GoRouter(
             return MaterialPage(
                 child: FoodDetail(title: name!, imagePath: image!));
           }),
+      GoRoute(
+        path: '/orders',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const OrderDetails(),
+      ),
       ShellRoute(
           navigatorKey: _shellNavigatorKey,
           builder: (context, state, child) => BottomBar(child: child),
