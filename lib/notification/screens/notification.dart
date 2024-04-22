@@ -87,24 +87,18 @@ class NotificationPageState extends State<NotificationPage> {
                     )
                   ]))
         ]),
-        SizedBox(height: media.height * 0.01),
-        SingleChildScrollView(
-            child: Column(
-          children: [
-            ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 40),
-              itemCount: notifications.length,
-              itemBuilder: ((context, index) {
-                var notification = notifications[index];
-                return Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: NotificationCard(notification: notification));
-              }),
-            )
-          ],
-        )),
+        ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          itemCount: notifications.length,
+          itemBuilder: ((context, index) {
+            var notification = notifications[index];
+            return Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: NotificationCard(notification: notification));
+          }),
+        )
       ],
     )));
   }
