@@ -16,6 +16,7 @@ import 'package:food_delivery_appb/on_boarding/on_boarding_2.dart';
 import 'package:food_delivery_appb/on_boarding/splash.dart';
 import 'package:food_delivery_appb/restaurant/screens/restaurant_detail.dart';
 import 'package:go_router/go_router.dart';
+import 'package:food_delivery_appb/notification/screens/notification.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -89,6 +90,11 @@ GoRouter router = GoRouter(
         path: '/orders',
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const OrderDetails(),
+      ),
+      GoRoute(
+        path: '/notification',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const NotificationPage(),
       ),
       ShellRoute(
           navigatorKey: _shellNavigatorKey,
