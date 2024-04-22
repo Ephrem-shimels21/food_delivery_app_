@@ -308,7 +308,7 @@ class _FoodDetailState extends State<FoodDetail> {
         ),
       ),
       Positioned(
-          bottom: 10,
+          bottom: 20,
           left: 0,
           right: 0,
           child: Center(
