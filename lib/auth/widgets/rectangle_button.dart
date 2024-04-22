@@ -37,7 +37,7 @@ class RectangleButton extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: type == RectangleButtonType.filled
                       ? null
-                      : Border.all(color: UniversalColors.primary),
+                      : Border.all(color: Colors.white),
                   color: type == RectangleButtonType.filled
                       ? UniversalColors.primary
                       : Colors.white,
