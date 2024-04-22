@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_appb/Route/route.dart';
 import 'package:food_delivery_appb/auth/widgets/rounded_textfield.dart';
 import 'package:food_delivery_appb/common/clipper_path.dart';
 import 'package:food_delivery_appb/common/popular_menu.dart';
@@ -108,7 +109,9 @@ class _HomeView extends State<HomeView> {
                     child: IconButton(
                       icon: Icon(Icons.notifications_outlined,
                           color: UniversalColors.primary, size: 30),
-                      onPressed: () {},
+                      onPressed: () {
+                        router.push('/notification');
+                      },
                     ))),
           ),
           Align(
