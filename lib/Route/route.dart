@@ -14,6 +14,7 @@ import 'package:food_delivery_appb/home/Screens/popular_restaurants.dart';
 import 'package:food_delivery_appb/on_boarding/on_boarding_1.dart';
 import 'package:food_delivery_appb/on_boarding/on_boarding_2.dart';
 import 'package:food_delivery_appb/on_boarding/splash.dart';
+import 'package:food_delivery_appb/profile/screens/uploading_choice.dart';
 import 'package:food_delivery_appb/restaurant/screens/restaurant_detail.dart';
 import 'package:go_router/go_router.dart';
 import 'package:food_delivery_appb/notification/screens/notification.dart';
@@ -95,6 +96,11 @@ GoRouter router = GoRouter(
         path: '/notification',
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const NotificationPage(),
+      ),
+      GoRoute(
+        path: '/photoUpload',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (constext, state) => const PhotoUploadingChoice(),
       ),
       ShellRoute(
           navigatorKey: _shellNavigatorKey,
