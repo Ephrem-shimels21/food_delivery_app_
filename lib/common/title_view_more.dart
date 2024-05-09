@@ -15,26 +15,28 @@ class TitleAndViewMore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(title,
-            style: TextStyle(
-                color: UniversalColors.primaryText,
-                fontSize: font?.toDouble() ?? 18,
-                fontWeight: FontWeight.w800)),
-        if (isViewMore)
-          TextButton(
-            onPressed: onView,
-            child: Text(
-              'View More',
-              style: TextStyle(
-                  color: UniversalColors.primary,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600),
-            ),
-          )
-      ],
-    );
+    return Container(
+        margin: const EdgeInsets.symmetric(horizontal: 15),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(title,
+                style: TextStyle(
+                    color: UniversalColors.primaryText,
+                    fontSize: font?.toDouble() ?? 18,
+                    fontWeight: FontWeight.w800)),
+            if (isViewMore)
+              TextButton(
+                onPressed: onView,
+                child: Text(
+                  'View More',
+                  style: TextStyle(
+                      color: UniversalColors.primary,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600),
+                ),
+              )
+          ],
+        ));
   }
 }
