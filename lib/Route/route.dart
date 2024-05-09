@@ -6,6 +6,7 @@ import 'package:food_delivery_appb/auth/screens/password_reset.dart';
 import 'package:food_delivery_appb/auth/screens/signup.dart';
 import 'package:food_delivery_appb/common/bottom_navigation.dart';
 import 'package:food_delivery_appb/food/screens/food_detail.dart';
+import 'package:food_delivery_appb/food/screens/order_checkout.dart';
 import 'package:food_delivery_appb/food/screens/order_details.dart';
 import 'package:food_delivery_appb/home/Screens/filtering_page.dart';
 import 'package:food_delivery_appb/home/Screens/home_view.dart';
@@ -115,6 +116,11 @@ GoRouter router = GoRouter(
         path: '/setLocation',
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const SetLocation(),
+      ),
+      GoRoute(
+        path: '/checkout',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const CheckOut(),
       ),
       ShellRoute(
           navigatorKey: _shellNavigatorKey,
