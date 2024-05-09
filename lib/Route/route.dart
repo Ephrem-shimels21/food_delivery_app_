@@ -14,6 +14,8 @@ import 'package:food_delivery_appb/home/Screens/popular_restaurants.dart';
 import 'package:food_delivery_appb/on_boarding/on_boarding_1.dart';
 import 'package:food_delivery_appb/on_boarding/on_boarding_2.dart';
 import 'package:food_delivery_appb/on_boarding/splash.dart';
+import 'package:food_delivery_appb/profile/screens/display_image.dart';
+import 'package:food_delivery_appb/profile/screens/set_location.dart';
 import 'package:food_delivery_appb/profile/screens/uploading_choice.dart';
 import 'package:food_delivery_appb/restaurant/screens/restaurant_detail.dart';
 import 'package:go_router/go_router.dart';
@@ -101,6 +103,18 @@ GoRouter router = GoRouter(
         path: '/photoUpload',
         parentNavigatorKey: _rootNavigatorKey,
         builder: (constext, state) => const PhotoUploadingChoice(),
+      ),
+      // GoRoute(
+      //     path: '/restaurantDetail/:image',
+      //     parentNavigatorKey: _rootNavigatorKey,
+      //     pageBuilder: (context, state) {
+      //       final image = state.pathParameters['image'];
+      //       return MaterialPage(child: ImageDisplayPage(image: image!));
+      //     }),\
+      GoRoute(
+        path: '/setLocation',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const SetLocation(),
       ),
       ShellRoute(
           navigatorKey: _shellNavigatorKey,
