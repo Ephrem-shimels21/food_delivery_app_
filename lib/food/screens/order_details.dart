@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:food_delivery_appb/Route/route.dart';
 import 'package:food_delivery_appb/auth/widgets/rectangle_button.dart';
 import 'package:food_delivery_appb/food/widgets/order_card.dart';
 import 'package:food_delivery_appb/utils/color_extension.dart';
@@ -198,7 +199,9 @@ class _OrderDetailsState extends State<OrderDetails> {
                           type: RectangleButtonType.outlined,
                           text: "Place Order",
                           width: media.width * 0.8,
-                          onPressed: () {})))
+                          onPressed: () {
+                            router.go('/checkout');
+                          })))
             ],
           ),
         ),
