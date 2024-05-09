@@ -16,16 +16,27 @@ class PhotoUploadingChoice extends StatefulWidget {
 
 class PhotoUploadingChoiceState extends State<PhotoUploadingChoice> {
   final ImagePicker _picker = ImagePicker();
-  XFile? _image;
+  File? _image;
 
   Future<void> _getImage(ImageSource source) async {
-    final XFile? image = await _picker.pickImage(source: source);
-    if (image != null) {
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    // final XFile? image = await _picker.pickImage(source: source);
+    if (pickedFile != null) {
       setState(() {
-        _image = image;
+        _image = File(pickedFile.path);
       });
     }
   }
+
+  // Future<void> _takePhotoWithCamera() async {
+  //   final pickedFile = await _picker.pickImage(source: ImageSource.camera);
+
+  //   if (pickedFile != null) {
+  //     setState(() {
+  //       _image = File(pickedFile.path);
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +120,7 @@ class PhotoUploadingChoiceState extends State<PhotoUploadingChoice> {
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 5,
                       blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
+                      offset: const Offset(0, 3), // changes position of shadow
                     ),
                   ],
                 ),
@@ -141,7 +152,7 @@ class PhotoUploadingChoiceState extends State<PhotoUploadingChoice> {
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 5,
                       blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
+                      offset: const Offset(0, 3), // changes position of shadow
                     ),
                   ],
                 ),
@@ -168,12 +179,27 @@ class PhotoUploadingChoiceState extends State<PhotoUploadingChoice> {
                 child: RectangleButton(
                     text: "Next",
                     onPressed: () {
-                      Navigator.push(
+                      if (_image != null) {
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ImageDisplayPage(
-                                    image: ('assets/img/GoodFood.png'),
-                                  )));
+                              builder: (context) =>
+                                  ImageDisplayPage(image: _image!)),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: const Text("Please select an image first.",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 15,
+                              )),
+                          duration: const Duration(seconds: 2),
+                          backgroundColor: UniversalColors.primary,
+                        ));
+                        // Show a dialog or a message to the user to select an image first
+                        print('Please select an image first.');
+                      }
                     }))
           ],
         )),
