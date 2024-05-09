@@ -28,7 +28,7 @@ class _BottomBar extends State<BottomBar> {
         context.go('/home');
         break;
       case 1:
-        context.go('/home');
+        context.push('/photoUpload');
         break;
       case 2:
         context.push('/orders');
