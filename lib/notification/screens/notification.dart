@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_appb/auth/widgets/rectangle_button.dart';
 import 'package:food_delivery_appb/notification/widgets/notification_card.dart';
 import 'package:food_delivery_appb/utils/color_extension.dart';
 import 'package:go_router/go_router.dart';
