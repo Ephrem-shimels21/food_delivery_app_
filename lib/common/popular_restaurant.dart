@@ -51,6 +51,6 @@ class PopularRestaurantGrid extends StatelessWidget {
   onTapping() {
     final encodedName = Uri.encodeComponent(restaurant['name']);
     final encodedImage = Uri.encodeComponent(restaurant['image']);
-    router.go('/restaurantDetail/$encodedName/$encodedImage');
+    router.push('/restaurantDetail/$encodedName/$encodedImage');
   }
 }

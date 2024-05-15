@@ -143,6 +143,16 @@ GoRouter router = GoRouter(
             return MaterialPage(
                 child: CallingPage(userName: name!, userPhoto: photo!));
           }),
+      GoRoute(
+        path: '/popularRestaurants',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const PopularRestaurants(),
+      ),
+      GoRoute(
+        path: '/popularMenu',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const PopularMenu(),
+      ),
       ShellRoute(
           navigatorKey: _shellNavigatorKey,
           builder: (context, state, child) => BottomBar(child: child),
@@ -151,16 +161,6 @@ GoRouter router = GoRouter(
               path: '/home',
               parentNavigatorKey: _shellNavigatorKey,
               builder: (context, state) => const HomeView(),
-            ),
-            GoRoute(
-              path: '/popularRestaurants',
-              parentNavigatorKey: _shellNavigatorKey,
-              builder: (context, state) => const PopularRestaurants(),
-            ),
-            GoRoute(
-              path: '/popularMenu',
-              parentNavigatorKey: _shellNavigatorKey,
-              builder: (context, state) => const PopularMenu(),
             ),
             GoRoute(
               path: '/chatList',

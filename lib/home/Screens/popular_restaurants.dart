@@ -4,6 +4,7 @@ import 'package:food_delivery_appb/common/clipper_path.dart';
 import 'package:food_delivery_appb/common/popular_restaurant.dart';
 import 'package:food_delivery_appb/common/title_view_more.dart';
 import 'package:food_delivery_appb/utils/color_extension.dart';
+import 'package:go_router/go_router.dart';
 
 class PopularRestaurants extends StatefulWidget {
   const PopularRestaurants({super.key});

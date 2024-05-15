@@ -61,6 +61,6 @@ class PopularMenuList extends StatelessWidget {
   onTapping() {
     final encodedName = Uri.encodeComponent(food['name']);
     final encodedImage = Uri.encodeComponent(food['image']);
-    router.go('/foodDetail/$encodedName/$encodedImage');
+    router.push('/foodDetail/$encodedName/$encodedImage');
   }
 }

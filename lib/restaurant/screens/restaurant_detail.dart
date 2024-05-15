@@ -187,7 +187,7 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
                                 child: TitleAndViewMore(
                                   title: "Popular Menu",
                                   onView: () {
-                                    context.go('/popularMenu');
+                                    context.push('/popularMenu');
                                   },
                                   isViewMore: true,
                                   isViewLess: false,
@@ -296,6 +296,25 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
                             )
                           ]))
                 ],
+              ),
+            ),
+          ),
+          Positioned(
+            left: 10,
+            top: 10,
+            child: Container(
+              decoration: BoxDecoration(
+                color: UniversalColors.primary.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: IconButton(
+                onPressed: () {
+                  GoRouter.of(context).pop();
+                },
+                icon: const Icon(Icons.arrow_back_ios_outlined),
+                color: UniversalColors.primary,
+                iconSize: 30,
+                padding: const EdgeInsets.all(10),
               ),
             ),
           ),

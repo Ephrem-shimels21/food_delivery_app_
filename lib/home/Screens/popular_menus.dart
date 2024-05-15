@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:food_delivery_appb/auth/widgets/rounded_textfield.dart';
 import 'package:food_delivery_appb/common/clipper_path.dart';
 import 'package:food_delivery_appb/common/popular_menu.dart';
 import 'package:food_delivery_appb/common/title_view_more.dart';
 import 'package:food_delivery_appb/utils/color_extension.dart';
+import 'package:go_router/go_router.dart';
 
 class PopularMenu extends StatefulWidget {
   const PopularMenu({super.key});
@@ -109,21 +111,41 @@ class _PopularMenu extends State<PopularMenu> {
                       onPressed: () {},
                     ))),
           ),
-          Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Text("Find Your\nFavorite Food",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).orientation ==
-                                Orientation.portrait
-                            ? media.width * 0.09
-                            : media.width * 0.035,
-                        color: UniversalColors.primaryText,
-                        fontFamily: "metropolis",
-                        fontWeight: FontWeight.w800,
-                      )))),
+          Positioned(
+              top: 6,
+              left: 10,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: UniversalColors.primary.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: IconButton(
+                  onPressed: () {
+                    GoRouter.of(context).pop();
+                  },
+                  icon: const Icon(Icons.arrow_back_ios_outlined),
+                  color: UniversalColors.primary,
+                  iconSize: 30,
+                  padding: const EdgeInsets.all(10),
+                ),
+              )),
+          Positioned(
+              top: 30,
+              child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Text("Find Your\nFavorite Food",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontSize: MediaQuery.of(context).orientation ==
+                                    Orientation.portrait
+                                ? media.width * 0.09
+                                : media.width * 0.035,
+                            color: UniversalColors.primaryText,
+                            fontFamily: "metropolis",
+                            fontWeight: FontWeight.w800,
+                          ))))),
           Padding(
               padding: EdgeInsets.only(
                   top:
