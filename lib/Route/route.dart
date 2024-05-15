@@ -4,6 +4,9 @@ import 'package:food_delivery_appb/auth/screens/forgot_password.dart';
 import 'package:food_delivery_appb/auth/screens/otp_verfication.dart';
 import 'package:food_delivery_appb/auth/screens/password_reset.dart';
 import 'package:food_delivery_appb/auth/screens/signup.dart';
+import 'package:food_delivery_appb/chat/screens/calling_page.dart';
+import 'package:food_delivery_appb/chat/screens/chat_list.dart';
+import 'package:food_delivery_appb/chat/screens/chat_room.dart';
 import 'package:food_delivery_appb/common/bottom_navigation.dart';
 import 'package:food_delivery_appb/food/screens/food_detail.dart';
 import 'package:food_delivery_appb/food/screens/order_checkout.dart';
@@ -122,6 +125,25 @@ GoRouter router = GoRouter(
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const CheckOut(),
       ),
+      GoRoute(
+          path: '/chatRoom/:name/:photo',
+          parentNavigatorKey: _rootNavigatorKey,
+          pageBuilder: (context, state) {
+            final name = state.pathParameters['name'];
+            final photo = state.pathParameters["photo"];
+
+            return MaterialPage(
+                child: ChatRoomPage(chatName: name!, imageUrl: photo!));
+          }),
+      GoRoute(
+          path: "/callingPage/:name/:photo",
+          pageBuilder: (context, state) {
+            final name = state.pathParameters['name'];
+            final photo = state.pathParameters["photo"];
+
+            return MaterialPage(
+                child: CallingPage(userName: name!, userPhoto: photo!));
+          }),
       ShellRoute(
           navigatorKey: _shellNavigatorKey,
           builder: (context, state, child) => BottomBar(child: child),
@@ -140,6 +162,11 @@ GoRouter router = GoRouter(
               path: '/popularMenu',
               parentNavigatorKey: _shellNavigatorKey,
               builder: (context, state) => const PopularMenu(),
+            ),
+            GoRoute(
+              path: '/chatList',
+              parentNavigatorKey: _shellNavigatorKey,
+              builder: (context, state) => const ChatList(),
             )
           ])
     ]);

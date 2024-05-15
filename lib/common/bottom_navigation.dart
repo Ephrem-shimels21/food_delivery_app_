@@ -34,7 +34,7 @@ class _BottomBar extends State<BottomBar> {
         context.push('/orders');
         break;
       case 3:
-        context.go('/home');
+        context.go('/chatList');
         break;
     }
 
