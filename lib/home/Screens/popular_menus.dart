@@ -169,6 +169,7 @@ class _PopularMenu extends State<PopularMenu> {
             title: "Popular Menu",
             onView: () {},
             isViewMore: false,
+            isViewLess: false,
           ),
           ListView.builder(
               physics: const NeverScrollableScrollPhysics(),

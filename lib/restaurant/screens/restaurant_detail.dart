@@ -190,6 +190,7 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
                                     context.go('/popularMenu');
                                   },
                                   isViewMore: true,
+                                  isViewLess: false,
                                 ),
                               ),
                               const SizedBox(

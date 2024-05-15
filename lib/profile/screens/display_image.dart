@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_appb/auth/widgets/rectangle_button.dart';
 import 'package:food_delivery_appb/utils/color_extension.dart';
 import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ImageDisplayPage extends StatefulWidget {
   final File image;

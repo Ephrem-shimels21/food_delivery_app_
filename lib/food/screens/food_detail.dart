@@ -192,6 +192,7 @@ class _FoodDetailState extends State<FoodDetail> {
                                       context.go('/popularMenu');
                                     },
                                     isViewMore: true,
+                                    isViewLess: false,
                                   ),
                                 ),
                                 const SizedBox(

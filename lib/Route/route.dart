@@ -18,7 +18,6 @@ import 'package:food_delivery_appb/home/Screens/popular_restaurants.dart';
 import 'package:food_delivery_appb/on_boarding/on_boarding_1.dart';
 import 'package:food_delivery_appb/on_boarding/on_boarding_2.dart';
 import 'package:food_delivery_appb/on_boarding/splash.dart';
-import 'package:food_delivery_appb/profile/screens/display_image.dart';
 import 'package:food_delivery_appb/profile/screens/set_location.dart';
 import 'package:food_delivery_appb/profile/screens/uploading_choice.dart';
 import 'package:food_delivery_appb/restaurant/screens/restaurant_detail.dart';

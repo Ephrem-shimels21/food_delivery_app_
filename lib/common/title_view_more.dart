@@ -5,11 +5,13 @@ class TitleAndViewMore extends StatelessWidget {
   final String title;
   final VoidCallback onView;
   final bool isViewMore;
+  final bool isViewLess;
   final int? font;
   const TitleAndViewMore(
       {super.key,
       this.font,
       required this.title,
+      required this.isViewLess,
       required this.onView,
       required this.isViewMore});
 
@@ -29,7 +31,7 @@ class TitleAndViewMore extends StatelessWidget {
               TextButton(
                 onPressed: onView,
                 child: Text(
-                  'View More',
+                  isViewLess ? 'View Less' : 'View More',
                   style: TextStyle(
                       color: UniversalColors.primary,
                       fontSize: 14,

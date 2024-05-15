@@ -169,6 +169,7 @@ class _PopularRestaurants extends State<PopularRestaurants> {
             title: "Popular Restaurant",
             onView: () {},
             isViewMore: false,
+            isViewLess: false,
           ),
           SizedBox(height: media.height * 0.02),
           SizedBox(

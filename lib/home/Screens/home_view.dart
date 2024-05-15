@@ -17,6 +17,8 @@ class HomeView extends StatefulWidget {
 
 class _HomeView extends State<HomeView> {
   TextEditingController searchController = TextEditingController();
+  bool _showMoreRestaurants = false;
+  bool _showMoreMenus = false;
 
   List popularRestaurants = [
     {
@@ -200,14 +202,18 @@ class _HomeView extends State<HomeView> {
           TitleAndViewMore(
             title: "Popular Restaurant",
             onView: () {
-              context.go('/popularRestaurants');
+              setState(() {
+                _showMoreRestaurants = !_showMoreRestaurants;
+              });
+              // context.go('/popularRestaurants');
             },
             isViewMore: true,
+            isViewLess: _showMoreRestaurants,
           ),
           SizedBox(height: media.height * 0.02),
           GridView.builder(
               shrinkWrap: true,
-              itemCount: 2,
+              itemCount: _showMoreRestaurants ? popularRestaurants.length : 2,
               physics: const ScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
@@ -221,15 +227,19 @@ class _HomeView extends State<HomeView> {
           TitleAndViewMore(
             title: "Popular Menu",
             onView: () {
-              context.go('/popularMenu');
+              // context.go('/popularMenu');
+              setState(() {
+                _showMoreMenus = !_showMoreMenus;
+              });
             },
             isViewMore: true,
+            isViewLess: _showMoreMenus,
           ),
           ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               padding: const EdgeInsets.symmetric(horizontal: 15),
-              itemCount: 1,
+              itemCount: _showMoreMenus ? popularMenu.length : 2,
               itemBuilder: ((context, index) {
                 var food = popularMenu[index] as Map? ?? {};
                 return PopularMenuList(food: food);
